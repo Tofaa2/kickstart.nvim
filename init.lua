@@ -93,6 +93,8 @@ vim.g.maplocalleader = ' '
 -- Save buffer with CNTRL + s
 vim.keymap.set({ 'i', 'x', 'n', 's' }, '<C-s>', '<cmd>w<cr><esc>', { desc = 'Save file' })
 
+-- Toggle file tree with <leader> + e
+vim.keymap.set({'x', 'n', 's' }, '<C-e>', '<cmd>NvimTreeToggle<cr><esc>', { desc = 'Toggles file tree' })
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
@@ -850,6 +852,17 @@ require('lazy').setup({
 
       -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'
+    end,
+  },
+  {
+    'nvim-tree/nvim-tree.lua',
+    version = '*',
+    lazy = false,
+    dependencies = {
+      'nvim-tree/nvim-web-devicons',
+    },
+    config = function()
+      require('nvim-tree').setup {}
     end,
   },
 
